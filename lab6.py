@@ -1,3 +1,5 @@
+from html.parser import charref
+
 import data
 from typing import Optional
 
@@ -37,12 +39,43 @@ def selection_sort(values:list[int]) -> None:
 
 
 # Part 1
-
+def selection_sort_book(books: list[data.Book]) -> None:
+    for idx in range(len(books) - 1):
+        mindex = idx
+        for j in range(idx + 1, len(books)):
+            if books[j].title < books[mindex].title:
+                mindex = j
+        books[idx], books[mindex] = books[mindex], books[idx]
 
 # Part 2
-
+def swap_case(input_str:str) -> str:
+    result = []
+    for char in input_str:
+        if char.islower():
+            result.append(char.upper())
+        elif char.isupper:
+            result.append(char.lower())
+        else:
+            result.append(char)
+    return ''.join(result)
 
 # Part 3
-
+def str_translate(s:str, old:str, new:str) -> str:
+    result = ""
+    for char in s:
+        if char == old:
+            result += new
+        else:
+            result += char
+    return result
 
 # Part 4
+def histogram(input_str:str) -> [str, int]:
+    word_counts = {}
+    words = input_str.split()
+    for word in words:
+        if word in word_counts:
+            word_counts[word] += 1
+        else:
+            word_counts[word] = 1
+    return word_counts

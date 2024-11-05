@@ -64,17 +64,39 @@ class TestCases(unittest.TestCase):
 
 
     # Part 1
+    def test_sorting_books(self):
+        books = [data.Book(["Author A"], "Zebra"), data.Book(["Author B"], "Apple")
+                 , data.Book(["Author C"], "Mango")]
+        lab6.selection_sort_book(books)
+        self.assertEqual(books[0].title, "Zebra")
+        self.assertEqual(books[1].title, "Apple")
+        self.assertEqual(books[2].title, "Mango")
+
+    def test_empty_list_book(self):
+        books = []
+        lab6.selection_sort_book(books)
+        self.assertEqual(books, [])
 
 
     # Part 2
-
+    def test_swap_case(self):
+        self.assertEqual(lab6.swap_case("Hello World"), "hELLO wORLD")
+        self.assertEqual(lab6.swap_case("PyThOn123"), "pYtHoN123")
+        self.assertEqual(lab6.swap_case(""), "")
 
     # Part 3
+    def test_str_translate(self):
+        self.assertEqual(lab6.str_translate("abcdcba", "a", "x"), 'xbcdcbx')
 
+    def test_str_translate2(self):
+        self.assertEqual(lab6.str_translate("mango", "a", "a"), 'mango')
 
     # Part 4
 
-
+    def test_histogram(self):
+        self.assertEqual(lab6.histogram("hello world hello"), {"hello":2,"world":1})
+        self.assertEqual(lab6.histogram("one two three two one one"), {"one":3, "two":2, "three":1})
+        self.assertEqual(lab6.histogram(""), {})
 
 
 
